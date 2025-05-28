@@ -15,7 +15,7 @@ jobs:
        java-version: 17
        distribution: 'oracle'
     - run: 
-       mvn --batch-mode --update verify
+       mvn --batch-mode --update-snapshots verify
        mkdir staging && cp taget/*.jar staging
     - name: Upload a Build Artifact     
       uses: actions/upload-artifact@v4.6.2
