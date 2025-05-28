@@ -2,6 +2,7 @@ name: Build and Push
 
 env:
  DOCKER_USERNAME: ${{vars.DOCKER_NAME}}
+ DOCKER_PASSWORD: ${{secrets.DOCKER_PSWD}}
 on:
  push:
   branches:
@@ -12,4 +13,6 @@ jobs:
   runs-on: ubuntu-latest
   steps:
    - name: Display
-     run: echo '${{env.DOCKER_USERNAME}}'
+     run: |
+      echo '${{env.DOCKER_USERNAME}}'
+      echo '${{env.DOCKER_PASSWORD}}'
