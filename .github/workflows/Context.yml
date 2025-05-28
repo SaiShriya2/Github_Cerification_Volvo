@@ -3,18 +3,18 @@ name: Github context
 run-name: ${{github.actor}}
 
 on: 
- workflow_dispatch:
+ push:
+  branches:
+   - main
 
 jobs:
  Github_context:
   runs-on: ubuntu-latest
   steps:
-   - name: Display Info
-     run: |
-      echo 'Event Name ${{github.event}}'
-      echo "Ref: ${{github.ref}}"
-      echo "SHA: ${{github.sha}}"
-      echo "Actor: ${{github.actor}}"
-      echo "Workflow: ${{github.workflow}}"
-      echo "Run Id: ${{github.run_id}}"
-      echo "Run number: ${{github.run_number}}"
+   - name: Checkout
+     uses: actions/checkout@v4.2.2
+   - name: Deploy only from master
+     if: github.ref == 'ref/heads/main'
+     run: echo 'Deploying to production from main branch....'
+   
+     
