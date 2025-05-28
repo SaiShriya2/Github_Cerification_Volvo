@@ -1,7 +1,7 @@
 name: Maven CI Workflow
 
 on: 
- workflow_dispatch
+ workflow_dispatch:
 
 jobs:
   build:
@@ -12,7 +12,7 @@ jobs:
     - name: Setup Java JDK
       uses: actions/setup-java@v3.14.1
       with: 
-       java-version: 17
+       java-version: '17'
        distribution: 'oracle'
     - run: 
        mvn --batch-mode --update-snapshots verify
